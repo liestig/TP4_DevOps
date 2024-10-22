@@ -32,12 +32,11 @@ jobs:
     needs: build
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy page
         uses: actions/deploy-pages@v3
       - name: Display URL
-        run: echo "Page is published at ${{ steps.deployment.outputs.page_url }}"
+        run: echo "Page is published at https://${{ github.repository_owner }}.github.io/${{ github.repository }}"
 
 
 permissions:
