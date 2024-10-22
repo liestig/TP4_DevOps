@@ -1,0 +1,33 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - deploy
+  pull_request:
+    branches:
+      - deploy
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload pages artifact
+        uses: actions/upload-pages-artifact@v2
+      - name: Deploy page
+        uses: actions/deploy-pages@v3
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
