@@ -36,6 +36,8 @@ jobs:
     steps:
       - name: Deploy page
         uses: actions/deploy-pages@v3
+      - name: Display URL
+        run: echo "Page is published at ${{ steps.deployment.outputs.page_url }}"
 
 
 permissions:
