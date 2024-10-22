@@ -21,11 +21,13 @@ jobs:
           node-version: 22
   deploy:
     runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v2
       - name: Deploy page
         uses: actions/deploy-pages@v3
+
 
 permissions:
   contents: read
